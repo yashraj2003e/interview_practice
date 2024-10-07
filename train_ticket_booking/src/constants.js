@@ -1,0 +1,38 @@
+export const rawTrainData = [
+  {
+    trainId: "123A",
+    name: "Express Train A",
+    date: "2024-09-20",
+    availableSeats: 5,
+    seats: [
+      { isBooked: true, isPWD: false },
+      { isBooked: false, isPWD: false },
+      { isBooked: false, isPWD: true },
+      { isBooked: true, isPWD: false },
+      { isBooked: false, isPWD: false },
+      { isBooked: false, isPWD: false },
+      { isBooked: false, isPWD: true },
+      { isBooked: false, isPWD: false },
+      { isBooked: false, isPWD: false },
+      { isBooked: false, isPWD: true },
+    ],
+  },
+  {
+    trainId: "123B",
+    name: "Express Train B",
+    date: "2024-09-20",
+    availableSeats: 5,
+    seats: [
+      { isBooked: true, isPWD: false },
+      { isBooked: false, isPWD: false },
+      { isBooked: false, isPWD: true },
+      { isBooked: true, isPWD: false },
+      { isBooked: false, isPWD: false },
+      { isBooked: false, isPWD: false },
+      { isBooked: false, isPWD: true },
+      { isBooked: false, isPWD: false },
+      { isBooked: false, isPWD: false },
+      { isBooked: false, isPWD: true },
+    ],
+  },
+];

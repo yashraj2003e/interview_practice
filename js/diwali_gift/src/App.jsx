@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 let gifts = [
   "Sweets Box",
@@ -30,12 +30,12 @@ function App() {
     setGuests(newGuests);
   }
 
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+  function shuffleArray(arr) {
+    for (let j = 0; j < arr.length; j++) {
+      let value = Math.floor(Math.random() * 10) % arr.length;
+      [arr[j], arr[value]] = [arr[value], arr[j]];
     }
-    return array;
+    return arr;
   }
 
   function handleShuffle() {

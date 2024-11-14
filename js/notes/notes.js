@@ -1,11 +1,12 @@
 /*
 
+JS IS A SINGLE-THREADED LANGUAGE !!!!
+
 THIS IS MADE FOR AMAZING JS NOTES
 
 LET'S FUCKING GO !!!!
 
 */
-
 
 /*
 
@@ -31,9 +32,3 @@ arr[0] = [1,2];
 // THIS ONLY STORES VALUES
 
 */
-
-
-
-
-
-

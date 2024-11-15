@@ -133,3 +133,26 @@ logPoint(newPoint);
 
 // Invalid because it doesn't match the subset !!
 logPoint({ hex: "#123" });
+
+// STATIC TYPE CHECKING
+
+const a = {
+  name: 1,
+  id: 2,
+};
+
+console.log(a.b);
+
+// @noErrors
+const announcement = "Hello World!";
+
+// How quickly can you spot the typos?
+// announcement.toLocaleLowercase();
+// announcement.toLocalLowerCase();
+
+// We probably meant to write this...
+announcement.toLocaleLowerCase();
+
+const flip = () => Math.random < 0.5;
+
+console.log(flip());

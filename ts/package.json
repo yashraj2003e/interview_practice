@@ -12,5 +12,9 @@
   "license": "ISC",
   "devDependencies": {
     "tsx": "^4.19.2"
+  },
+  "dependencies": {
+    "debounce": "^2.2.0",
+    "throttle": "^1.0.3"
   }
 }

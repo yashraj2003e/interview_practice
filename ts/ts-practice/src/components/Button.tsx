@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useCounter } from "../contexts/CounterContext";
 
 interface MyButtonProps {
   text: string | number | boolean;
@@ -11,7 +12,7 @@ interface Book {
 }
 
 // Functional Component !
-export const Button: React.FC<MyButtonProps> = ({ text, onClick }) => {
+export const Button: React.FC<MyButtonProps> = () => {
   //always give a type !
   const [value, setValue] = useState<Book>({
     name: "Yashraj",
@@ -29,7 +30,7 @@ export const Button: React.FC<MyButtonProps> = ({ text, onClick }) => {
   );
 };
 
-export const Button1: React.FC<MyButtonProps> = ({ text, onClick }) => {
+export const Button1: React.FC<MyButtonProps> = () => {
   //always give a type !
   const [value, setValue] = useState<string | undefined>();
 
@@ -55,5 +56,14 @@ export const Button1: React.FC<MyButtonProps> = ({ text, onClick }) => {
       <p>{value}</p>
       <button>Submit</button>
     </form>
+  );
+};
+
+export const Button2: React.FC = () => {
+  const counter = useCounter();
+  return (
+    <h1 onClick={() => counter?.setVal((val: number) => val + 1)}>
+      {counter?.val}
+    </h1>
   );
 };

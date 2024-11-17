@@ -1,6 +1,11 @@
-import React, { createContext, ReactPortal, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-const counterContext = createContext<object>({});
+interface counterContextProps {
+  val: number;
+  setVal: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const counterContext = createContext<counterContextProps | null>(null);
 
 interface counterContextInterface {
   children: React.ReactNode;
@@ -33,10 +38,15 @@ interface counterContextInterface {
 // }
 
 export default function CounterContext({ children }: counterContextInterface) {
-  return children;
+  const [val, setVal] = useState<number>(0);
+  return (
+    <counterContext.Provider value={{ val, setVal }}>
+      {children}
+    </counterContext.Provider>
+  );
 }
 
-function useCounter(): object {
+function useCounter(): counterContextProps | null {
   const value = useContext(counterContext);
   if (value === undefined) {
     throw new Error("Context is Used Outside !");

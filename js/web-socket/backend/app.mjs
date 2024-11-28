@@ -75,15 +75,32 @@ app.get("/", (req, res) => res.send("Hello"));
 const server = http.createServer(app);
 const io = new Server(server);
 
-io.on("connection", (Socket) => {
-  Socket.on("join", () => {
-    console.log("Someone joined !");
-    Socket.emit("got it");
+let users = 0;
+
+io.on("connection", (socket) => {
+  console.log("A user connected");
+  users++;
+  socket.broadcast.emit("count", users);
+  socket.emit("count", users);
+
+  // Handle join event
+  socket.on("join", () => {
+    console.log("Someone joined!");
   });
 
-  setTimeout(() => {
-    Socket.emit("got it");
-  }, 10000);
+  // Handle disconnecting event
+  socket.on("disconnecting", () => {
+    console.log("A user is disconnecting!");
+  });
+
+  // Optionally, you can also listen for `disconnect` if you want to log it
+  socket.on("disconnect", () => {
+    console.log("User disconnected");
+    users--;
+    // updated user count to all other users
+    socket.broadcast.emit("count", users);
+    socket.emit("count", users);
+  });
 });
 
 server.listen(3000);

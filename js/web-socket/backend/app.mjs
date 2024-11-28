@@ -88,6 +88,11 @@ io.on("connection", (socket) => {
     console.log("Someone joined!");
   });
 
+  socket.on("change", (text) => {
+    socket.emit("change", text);
+    socket.broadcast.emit("change", text);
+  });
+
   // Handle disconnecting event
   socket.on("disconnecting", () => {
     console.log("A user is disconnecting!");

@@ -15,6 +15,8 @@ const io = new Server(server);
 let users = new Set();
 let currentCode = "";
 
+let cursors = [];
+
 io.on("connection", (socket) => {
   users.add(socket.id);
 
@@ -24,6 +26,21 @@ io.on("connection", (socket) => {
   socket.on("change", (text) => {
     currentCode = text;
     socket.broadcast.emit("change", text);
+  });
+
+  // socket.on("disconnect", (reason) => console.log(reason));
+
+  socket.on("reconnect", (reason) => console.log(reason));
+
+  socket.on("disconnecting", () => {
+    if (users.size == 1) {
+      console.log(currentCode);
+    }
+  });
+
+  socket.on("cursor", (position) => {
+    cursors[socket.id] = position;
+    console.log(cursors);
   });
 
   socket.on("disconnect", () => {
